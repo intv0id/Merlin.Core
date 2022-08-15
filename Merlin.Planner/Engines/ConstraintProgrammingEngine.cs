@@ -1,6 +1,5 @@
 ﻿using Decider.Csp.Integer;
 using Merlin.Planner.Constraint;
-using Merlin.Planner.Helpers;
 using Merlin.Planner.Planning;
 
 namespace Merlin.Planner.Engines

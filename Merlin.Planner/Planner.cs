@@ -55,7 +55,7 @@ namespace Merlin.Planner
             this.employees.Add(employee);
         }
 
-        public void Start()
+        public void Start(bool verifyConstraints = true)
         {
             if (!this.VerifyArguments())
             {
@@ -65,7 +65,7 @@ namespace Merlin.Planner
             }
 
             this.computeStatus = PlanningComputeStatus.Started;
-            _ = Compute();
+            _ = Compute(verifyConstraints: verifyConstraints);
         }
 
         public PlanningResult GetPlanning()
@@ -78,7 +78,7 @@ namespace Merlin.Planner
                     : null);
         }
 
-        private async Task Compute()
+        private async Task Compute(bool verifyConstraints)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace Merlin.Planner
 
                 foreach (var constraint in this.constraints)
                 {
-                    if (!await constraint.VerifyAsync(
+                    if (verifyConstraints && !await constraint.VerifyAsync(
                             employees: this.employees,
                             schedule: schedule))
                     {
@@ -109,7 +109,7 @@ namespace Merlin.Planner
                 this.schedule = schedule;
                 this.computeStatus = PlanningComputeStatus.Succeeded;
             }
-            catch
+            catch (Exception ex)
             {
                 this.computeStatus = PlanningComputeStatus.Failed;
                 if (errorCode == null)
