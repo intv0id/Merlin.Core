@@ -30,6 +30,7 @@ planner.AddEmployee(bob);
 planner.AddEmployee(zdouard);
 planner.AddConstraint(bobDayOffVacation);
 planner.AddConstraint(aliceVacation);
+planner.AddConstraint(new NotConsecutiveDaysConstraint());
 
 // When
 planner.Start();

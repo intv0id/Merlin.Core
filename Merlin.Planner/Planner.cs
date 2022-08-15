@@ -20,18 +20,15 @@ namespace Merlin.Planner
         private ComputeErrorCode? errorCode;
         private Schedule? schedule;
 
-        private readonly List<IEngine> engines;
+        private readonly IEngine engine;
 
-        public Planner()
+        public Planner(IEngine? engine = null)
         {
             this.constraints = new List<IConstraint>();
             this.employees = new List<Employee>();
             this.computeStatus = PlanningComputeStatus.NotStarted;
 
-            this.engines = new List<IEngine>
-            {
-                new GreedyEngine(),
-            };
+            this.engine = engine ?? new ConstraintProgrammingEngine();
         }
 
         public void AddConstraint(IConstraint constraint)
@@ -93,13 +90,10 @@ namespace Merlin.Planner
 
                 var schedule = new Schedule(startDate: this.startDate.Value, endDate: this.endDate.Value);
 
-                foreach (var engine in this.engines)
-                {
-                    await engine.ComputeAsync(
-                        constraints: this.constraints,
-                        employees: this.employees,
-                        schedule: schedule);
-                }
+                await engine.ComputeAsync(
+                    constraints: this.constraints,
+                    employees: this.employees,
+                    schedule: schedule);
 
                 foreach (var constraint in this.constraints)
                 {

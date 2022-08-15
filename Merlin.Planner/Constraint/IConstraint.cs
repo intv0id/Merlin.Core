@@ -4,6 +4,12 @@ namespace Merlin.Planner.Constraint
 {
     public interface IConstraint
     {
-        Task<bool> VerifyAsync(IList<Employee> employees, Schedule schedule);
+        Task<bool> VerifyAsync(
+            IList<Employee> employees, 
+            Schedule schedule);
+
+        Task<ISet<Assignment>> GetConflictingSlots(
+            IList<Employee> employees,
+            Schedule schedule);
     }
 }
