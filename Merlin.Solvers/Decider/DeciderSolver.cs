@@ -34,7 +34,6 @@ namespace Merlin.Solvers.Decider
                 constraints: cspConstraints);
             state.Search();
 
-
             foreach (var cspSlot in cspSlots)
             {
                 cspSlot.Assignment.Employee

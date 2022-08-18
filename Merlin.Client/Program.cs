@@ -3,7 +3,7 @@ using Merlin.Planner;
 using Merlin.Planner.Constraint;
 using Merlin.Planner.Helpers;
 using Merlin.Planner.Model;
-using Merlin.Planner.Solvers.DeciderSolver;
+using Merlin.Solvers.Decider;
 
 // Given
 var alice = new Employee(name: "Alice");
@@ -40,7 +40,7 @@ planner.AddEmployee(marie);
 planner.AddConstraint(bobDayOffVacation);
 planner.AddConstraint(aliceVacation);
 planner.AddConstraint(new NotConsecutiveDaysConstraint());
-planner.AddConstraint(new DaysParityConstraint(CustomConstraints.GetDayGrouping()));
+planner.AddConstraint(new DaysParityConstraint(CustomDaysGrouping.GetDayGrouping()));
 
 // When
 planner.Start();

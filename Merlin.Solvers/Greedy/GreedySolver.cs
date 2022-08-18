@@ -1,10 +1,14 @@
-﻿using Merlin.Planner.Constraint;
-using Merlin.Planner.Model;
-
-namespace Merlin.Solvers.Greedy
+﻿namespace Merlin.Solvers.Greedy
 {
+    using Merlin.Planner.Constraint;
+    using Merlin.Planner.Model;
+
+    /// <summary>
+    /// A greedy solver that assigns alternatively slots to employees.
+    /// </summary>
     public class GreedySolver : ISolver
     {
+        /// <inheritdoc/>
         public async Task ComputeAsync(
             IList<IConstraint> constraints,
             IList<Employee> employees,
