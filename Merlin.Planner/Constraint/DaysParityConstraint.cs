@@ -66,17 +66,15 @@ namespace Merlin.Planner.Constraint
             {
                 var bagOfSlots = cspSlots
                     .Where(c => groupDefinition(c.Assignment.Date.Date));
-                int minSlotsPerEmployee = bagOfSlots.Count() / employees.Count();
-                int maxSlotsPerEmployee = minSlotsPerEmployee + 1;
+                int maxSlotsPerEmployee = (bagOfSlots.Count() / employees.Count()) + 1;
 
                 foreach (var employee in employees)
                 {
                     var employeeIdx = employees.IndexOf(employee);
-                    var employeeSlots = bagOfSlots.
-                        Select(x => x.CspVariable == employeeIdx).
-                        Aggregate((x, y) => x + y);
+                    var employeeSlots = bagOfSlots
+                        .Select(x => x.CspVariable == employeeIdx)
+                        .Aggregate((x, y) => x + y);
                     cspConstraints.Add(new ConstraintInteger(employeeSlots <= maxSlotsPerEmployee));
-                    cspConstraints.Add(new ConstraintInteger(employeeSlots >= minSlotsPerEmployee));
                 }
             }
 

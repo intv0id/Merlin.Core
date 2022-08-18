@@ -17,8 +17,8 @@ var bobDayOffVacation = new VacationConstraint(
     employee: bob,
     vacationStart: bobDayOff);
 
-var aliceVacationStartDate = new DateTime(year: 2020, month: 5, day: 25);
-var aliceVacationEndDate = new DateTime(year: 2020, month: 5, day: 30);
+var aliceVacationStartDate = new DateTime(year: 2020, month: 5, day: 1);
+var aliceVacationEndDate = new DateTime(year: 2020, month: 5, day: 15);
 var aliceVacation = new VacationConstraint(
     employee: alice,
     vacationStart: aliceVacationStartDate,
@@ -27,8 +27,8 @@ var aliceVacation = new VacationConstraint(
 var planner = new Planner();
 
 planner.SetDates(
-    new DateTime(year: 2020, month: 5, day: 15),
-    new DateTime(year: 2020, month: 5, day: 30));
+    new DateTime(year: 2020, month: 5, day: 1),
+    new DateTime(year: 2020, month: 6, day: 30));
 planner.AddEmployee(alice);
 planner.AddEmployee(bob);
 planner.AddEmployee(edouard);
