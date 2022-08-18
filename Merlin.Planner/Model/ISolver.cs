@@ -1,9 +1,8 @@
 ﻿using Merlin.Planner.Constraint;
-using Merlin.Planner.Planning;
 
-namespace Merlin.Planner.Engines
+namespace Merlin.Planner.Model
 {
-    public interface IEngine
+    public interface ISolver
     {
         public Task ComputeAsync(
             IList<IConstraint> constraints,

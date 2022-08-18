@@ -1,4 +1,4 @@
-﻿namespace Merlin.Planner.Planning
+﻿namespace Merlin.Planner.Model
 {
     public class Assignment
     {
@@ -8,7 +8,7 @@
 
         public Assignment(DateTime date)
         {
-            this.Date = date;
+            Date = date;
         }
     }
 }

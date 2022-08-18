@@ -1,12 +1,9 @@
-﻿using Decider.Csp.Integer;
-using Merlin.Planner.Helpers;
-using Merlin.Planner.Planning;
-using static Merlin.Planner.Engines.ConstraintProgrammingEngine;
-using ICspConstraint = Decider.Csp.BaseTypes.IConstraint;
+﻿using Merlin.Planner.Helpers;
+using Merlin.Planner.Model;
 
 namespace Merlin.Planner.Constraint
 {
-    public class VacationConstraint : ICspSolvableConstraint
+    public class VacationConstraint : IConstraint
     {
         public Employee Employee { get; }
         public DateTime VacationStartDate { get; }
@@ -67,26 +64,6 @@ namespace Merlin.Planner.Constraint
             }
 
             return conflictingSlots;
-        }
-
-        public IList<ICspConstraint> ToCspConstraints(
-            IList<CspAssignment> cspSlots,
-            IList<Employee> employees)
-        {
-            var cspConstraints = new List<ICspConstraint>();
-
-            foreach (var cspSlot in cspSlots)
-            {
-                if (cspSlot.Assignment.Date.Date >= VacationStartDate.Date
-                    && cspSlot.Assignment.Date.Date <= VacationEndDate.Date)
-                {
-                    var employeeIdx = employees.IndexOf(Employee);
-                    cspConstraints.Add(new ConstraintInteger(
-                            cspSlot.CspVariable != employeeIdx));
-                }
-            }
-
-            return cspConstraints;
         }
     }
 }

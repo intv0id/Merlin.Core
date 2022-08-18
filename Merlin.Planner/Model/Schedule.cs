@@ -1,6 +1,6 @@
 ﻿using Merlin.Planner.Helpers;
 
-namespace Merlin.Planner.Planning
+namespace Merlin.Planner.Model
 {
     public class Schedule
     {
@@ -8,10 +8,10 @@ namespace Merlin.Planner.Planning
 
         public Schedule(DateTime startDate, DateTime endDate)
         {
-            this.Slots = new List<Assignment>();
+            Slots = new List<Assignment>();
             foreach (var day in DateHelper.DateRange(startDate, endDate))
             {
-                this.Slots.Add(new Assignment(date: day));
+                Slots.Add(new Assignment(date: day));
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using Merlin.Planner.Planning;
+﻿using Merlin.Planner.Model;
 
 namespace Merlin.Planner.Constraint
 {

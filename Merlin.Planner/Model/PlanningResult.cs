@@ -1,4 +1,4 @@
-﻿namespace Merlin.Planner.Planning
+﻿namespace Merlin.Planner.Model
 {
     public class PlanningResult
     {

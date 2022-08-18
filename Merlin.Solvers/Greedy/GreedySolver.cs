@@ -1,13 +1,13 @@
 ﻿using Merlin.Planner.Constraint;
-using Merlin.Planner.Planning;
+using Merlin.Planner.Model;
 
-namespace Merlin.Planner.Engines
+namespace Merlin.Solvers.Greedy
 {
-    public class GreedyEngine : IEngine
+    public class GreedySolver : ISolver
     {
         public async Task ComputeAsync(
-            IList<IConstraint> constraints, 
-            IList<Employee> employees, 
+            IList<IConstraint> constraints,
+            IList<Employee> employees,
             Schedule schedule)
         {
             await Task.Yield();

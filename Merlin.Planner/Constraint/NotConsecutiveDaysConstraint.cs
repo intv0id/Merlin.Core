@@ -1,12 +1,8 @@
-﻿using Decider.Csp.Integer;
-using Merlin.Planner.Engines;
-using Merlin.Planner.Planning;
-using static Merlin.Planner.Engines.ConstraintProgrammingEngine;
-using ICspConstraint = Decider.Csp.BaseTypes.IConstraint;
+﻿using Merlin.Planner.Model;
 
 namespace Merlin.Planner.Constraint
 {
-    public class NotConsecutiveDaysConstraint : ICspSolvableConstraint
+    public class NotConsecutiveDaysConstraint : IConstraint
     {
         public async Task<bool> VerifyAsync(
             IList<Employee> employees, 
@@ -57,27 +53,6 @@ namespace Merlin.Planner.Constraint
             }
 
             return conflitingSlots;
-        }
-
-        public IList<ICspConstraint> ToCspConstraints(
-            IList<CspAssignment> cspSlots, 
-            IList<Employee> employees)
-        {
-            var cspConstraints = new List<ICspConstraint>();
-
-            foreach (var cspSlot in cspSlots)
-            {
-                var nextDayAssignments = cspSlots.Where(c => 
-                    c.Assignment.Date.AddDays(1).Date 
-                    == cspSlot.Assignment.Date.Date);
-                foreach (var assignment in nextDayAssignments)
-                {
-                    cspConstraints.Add(new ConstraintInteger(
-                        cspSlot.CspVariable != assignment.CspVariable));
-                }
-            }
-
-            return cspConstraints;
         }
     }
 }

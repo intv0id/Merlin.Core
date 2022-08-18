@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using Merlin.Planner.Constraint;
 using Merlin.Planner.Engines;
-using Merlin.Planner.Planning;
+using Merlin.Planner.Model;
+using Merlin.Planner.Solvers.DeciderSolver;
 
 namespace Merlin.Planner
 {
@@ -20,15 +21,15 @@ namespace Merlin.Planner
         private ComputeErrorCode? errorCode;
         private Schedule? schedule;
 
-        private readonly IEngine engine;
+        private readonly ISolver engine;
 
-        public Planner(IEngine? engine = null)
+        public Planner(ISolver engine)
         {
             this.constraints = new List<IConstraint>();
             this.employees = new List<Employee>();
             this.computeStatus = PlanningComputeStatus.NotStarted;
 
-            this.engine = engine ?? new ConstraintProgrammingEngine();
+            this.engine = engine;
         }
 
         public void AddConstraint(IConstraint constraint)

@@ -1,18 +1,15 @@
-﻿using Decider.Csp.Integer;
-using Merlin.Planner.Planning;
-using static Merlin.Planner.Engines.ConstraintProgrammingEngine;
-using ICspConstraint = Decider.Csp.BaseTypes.IConstraint;
+﻿using Merlin.Planner.Model;
 
 namespace Merlin.Planner.Constraint
 {
-    public class DaysParityConstraint : ICspSolvableConstraint
+    public class DaysParityConstraint : IConstraint
     {
-        IList<Func<DateTime, bool>> groupsDefinition;
+        public IList<Func<DateTime, bool>> GroupsDefinition { get; }
 
         public DaysParityConstraint(
             IList<Func<DateTime, bool>> groupsDefinition)
         {
-            this.groupsDefinition = groupsDefinition;
+            this.GroupsDefinition = groupsDefinition;
         }
 
         public Task<ISet<Assignment>> GetConflictingSlots(
@@ -28,7 +25,7 @@ namespace Merlin.Planner.Constraint
         {
             await Task.Yield();
 
-            foreach (var groupDefinition in groupsDefinition)
+            foreach (var groupDefinition in GroupsDefinition)
             {
                 var employeeAssignmentsCount = new Dictionary<Employee, int>();
                 var assignmentsInGroupByEmployee = schedule.Slots
@@ -54,31 +51,6 @@ namespace Merlin.Planner.Constraint
             }
 
             return true;
-        }
-
-        public IList<ICspConstraint> ToCspConstraints(
-            IList<CspAssignment> cspSlots, 
-            IList<Employee> employees)
-        {
-            var cspConstraints = new List<ICspConstraint>();
-
-            foreach (var groupDefinition in groupsDefinition)
-            {
-                var bagOfSlots = cspSlots
-                    .Where(c => groupDefinition(c.Assignment.Date.Date));
-                int maxSlotsPerEmployee = (bagOfSlots.Count() / employees.Count()) + 1;
-
-                foreach (var employee in employees)
-                {
-                    var employeeIdx = employees.IndexOf(employee);
-                    var employeeSlots = bagOfSlots
-                        .Select(x => x.CspVariable == employeeIdx)
-                        .Aggregate((x, y) => x + y);
-                    cspConstraints.Add(new ConstraintInteger(employeeSlots <= maxSlotsPerEmployee));
-                }
-            }
-
-            return cspConstraints;
         }
     }
 }

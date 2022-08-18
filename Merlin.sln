@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Merlin.Planner", "Merlin.Planner\Merlin.Planner.csproj", "{2A7794A7-9055-4436-9A48-8F94A9B37E7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merlin.Planner", "Merlin.Planner\Merlin.Planner.csproj", "{2A7794A7-9055-4436-9A48-8F94A9B37E7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Merlin.Client", "Merlin.Client\Merlin.Client.csproj", "{6EFCA182-9C99-4B1F-B115-69D49FBCB828}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merlin.Client", "Merlin.Client\Merlin.Client.csproj", "{6EFCA182-9C99-4B1F-B115-69D49FBCB828}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Merlin.Solvers", "Merlin.Solvers\Merlin.Solvers.csproj", "{F0CB14D8-CE5E-48CB-86F0-7305D4E084E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6EFCA182-9C99-4B1F-B115-69D49FBCB828}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EFCA182-9C99-4B1F-B115-69D49FBCB828}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EFCA182-9C99-4B1F-B115-69D49FBCB828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0CB14D8-CE5E-48CB-86F0-7305D4E084E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0CB14D8-CE5E-48CB-86F0-7305D4E084E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0CB14D8-CE5E-48CB-86F0-7305D4E084E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0CB14D8-CE5E-48CB-86F0-7305D4E084E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

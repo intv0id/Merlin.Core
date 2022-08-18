@@ -2,7 +2,8 @@
 using Merlin.Planner;
 using Merlin.Planner.Constraint;
 using Merlin.Planner.Helpers;
-using Merlin.Planner.Planning;
+using Merlin.Planner.Model;
+using Merlin.Planner.Solvers.DeciderSolver;
 
 // Given
 var alice = new Employee(name: "Alice");
@@ -24,7 +25,8 @@ var aliceVacation = new VacationConstraint(
     vacationStart: aliceVacationStartDate,
     vacationEnd: aliceVacationEndDate);
 
-var planner = new Planner();
+var solver = new DeciderSolver();
+var planner = new Planner(solver);
 
 planner.SetDates(
     new DateTime(year: 2020, month: 5, day: 1),
