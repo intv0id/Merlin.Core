@@ -3,7 +3,6 @@ using Merlin.Planner;
 using Merlin.Planner.Constraint;
 using Merlin.Planner.Helpers;
 using Merlin.Planner.Model;
-using Merlin.Solvers.Decider;
 
 // Given
 var alice = new Employee(name: "Alice");
@@ -25,12 +24,12 @@ var aliceVacation = new VacationConstraint(
     vacationStart: aliceVacationStartDate,
     vacationEnd: aliceVacationEndDate);
 
-var solver = new DeciderSolver();
+var solver = SolverHelpers.GetSolver(MerlinSolversEnum.ORTools);
 var planner = new Planner(solver);
 
 planner.SetDates(
     new DateTime(year: 2020, month: 5, day: 1),
-    new DateTime(year: 2020, month: 6, day: 30));
+    new DateTime(year: 2020, month: 5, day: 15));
 planner.AddEmployee(alice);
 planner.AddEmployee(bob);
 planner.AddEmployee(edouard);
