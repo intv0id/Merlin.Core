@@ -29,7 +29,7 @@ var planner = new Planner(solver);
 
 planner.SetDates(
     new DateTime(year: 2020, month: 5, day: 1),
-    new DateTime(year: 2020, month: 5, day: 15));
+    new DateTime(year: 2020, month: 11, day: 1));
 planner.AddEmployee(alice);
 planner.AddEmployee(bob);
 planner.AddEmployee(edouard);
