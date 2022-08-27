@@ -114,7 +114,7 @@ public class Planner
         try
         {
             if (!this.startDate.HasValue)
-            { 
+            {
                 this.errorCode = ComputeErrorCode.InvalidArguments;
                 throw new ArgumentNullException($"{nameof(this.startDate)}");
             }
@@ -127,7 +127,7 @@ public class Planner
 
             var schedule = new Schedule(startDate: this.startDate.Value, endDate: this.endDate.Value);
 
-            await engine.ComputeAsync(
+            await this.engine.ComputeAsync(
                 constraints: this.constraints,
                 employees: this.employees,
                 schedule: schedule);

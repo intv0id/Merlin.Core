@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merlin.Planner", "Merlin.Pl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merlin.Client", "Merlin.Client\Merlin.Client.csproj", "{6EFCA182-9C99-4B1F-B115-69D49FBCB828}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Merlin.Solvers", "Merlin.Solvers\Merlin.Solvers.csproj", "{F0CB14D8-CE5E-48CB-86F0-7305D4E084E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merlin.Solvers", "Merlin.Solvers\Merlin.Solvers.csproj", "{F0CB14D8-CE5E-48CB-86F0-7305D4E084E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{6A6E1B96-17E4-4D23-BF3C-0FDB2AF872C0}"
 	ProjectSection(SolutionItems) = preProject

@@ -8,7 +8,7 @@ namespace Merlin.Solvers.Decider;
 /// <summary>
 /// Decider solver constraint helper methods.
 /// </summary>
-public static class ConstraintHelper
+public static class DeciderConstraintHelpers
 {
     /// <summary>
     /// Converts a constraint to a set of Decider constraints.
@@ -37,7 +37,7 @@ public static class ConstraintHelper
                     vConstraint,
                     cspSlots,
                     employees),
-            _ => throw new InvalidOperationException($"{constraint.GetType()} is not solvable by {nameof(DeciderSolver)}"),
+            _ => throw new InvalidOperationException($"{constraint.GetType()} is not solvable by {nameof(DeciderSolver)}."),
         };
     }
 

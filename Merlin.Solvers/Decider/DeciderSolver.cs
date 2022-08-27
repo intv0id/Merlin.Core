@@ -21,7 +21,7 @@ namespace Merlin.Solvers.Decider
 
             // Constraints
             var cspConstraints = constraints
-                .Select(c => ConstraintHelper.ToCspConstraints(
+                .Select(c => DeciderConstraintHelpers.ToCspConstraints(
                     constraint: c,
                     cspSlots: cspSlots,
                     employees: employees))
