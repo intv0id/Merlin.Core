@@ -57,7 +57,7 @@ public class Planner
 
         if (endDateDay < startDateDay)
         {
-            throw new ArgumentOutOfRangeException("endDate is before startDate.");   
+            throw new ArgumentOutOfRangeException("endDate is before startDate.");
         }
 
         this.startDate = startDateDay;

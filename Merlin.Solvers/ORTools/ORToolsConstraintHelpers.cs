@@ -75,9 +75,15 @@ internal static class ORToolsConstraintHelpers
             int minSlotsPerEmployee = bagOfSlots.Count() / employeeCount;
             int maxSlotsPerEmployee = minSlotsPerEmployee + 1;
 
+            var assignmentIdxList = bagOfSlots
+                .Select(a => ortShifts.GetAssignmentIdx(a));
+
             ortShifts.ForeachEmployeeIdx(e =>
             {
-                var employeeOrtSlots = ortShifts.GetEmployeeOrtSlots(employeeIdx: e);
+                var employeeOrtSlots = ortShifts
+                    .GetEmployeeOrtSlots(employeeIdx: e)
+                    .Where((item, index) => assignmentIdxList.Contains(index))
+                    .ToArray();
                 model.AddLinearConstraint(
                     expr: LinearExpr.Sum(employeeOrtSlots),
                     lb: minSlotsPerEmployee,
@@ -120,7 +126,10 @@ internal static class ORToolsConstraintHelpers
             {
                 var employeeIdx = ortShifts.GetEmployeeIdx(vConstraint.Employee);
 
-                var constraintedOrtValue = ortShifts.GetOrtValue(employeeIdx: employeeIdx, assignmentIdx: assignmentIdx);
+                var constraintedOrtValue = ortShifts.GetOrtValue(
+                    employeeIdx: employeeIdx, 
+                    assignmentIdx: assignmentIdx);
+
                 model.Add(constraintedOrtValue == 0);
             }
         }
