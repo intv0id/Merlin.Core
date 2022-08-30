@@ -1,6 +1,8 @@
 # Merlin 🧙‍♂️
 The on-call wizard.
 
+[![Build](https://github.com/intv0id/Merlin.Core/actions/workflows/build.yml/badge.svg)](https://github.com/intv0id/Merlin.Core/actions/workflows/build.yml)
+
 ---
 
 This library allows to create an on-call schedule, encoding constraints.
